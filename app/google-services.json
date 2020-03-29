@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "462580571430",
+    "firebase_url": "https://driver-drowsiness-567fb.firebaseio.com",
+    "project_id": "driver-drowsiness-567fb",
+    "storage_bucket": "driver-drowsiness-567fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:462580571430:android:ad405a9043b3591739f5e7",
+        "android_client_info": {
+          "package_name": "com.google.firebase.samples.apps.mlkit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "462580571430-32fq259gua1kvle24t74r3bj48ovejv5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.google.firebase.samples.apps.mlkit",
+            "certificate_hash": "8cb0c5d5d58a65896c66639e34c050b4a01c76e4"
+          }
+        },
+        {
+          "client_id": "462580571430-rhpcuavpdsuj4iqea1saccscakqn7m46.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAe_MqigpJK62jwH9SpX_pnbL-VvUdwhz4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "462580571430-rhpcuavpdsuj4iqea1saccscakqn7m46.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
