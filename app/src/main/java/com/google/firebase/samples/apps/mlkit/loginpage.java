@@ -67,10 +67,7 @@ public class loginpage extends AppCompatActivity {
                 {
                     email.setError("Please Enter Email");
                 }
-                else if(Patterns.EMAIL_ADDRESS.matcher(Email).matches())
-                {
-                    email.setError("Please Enter valid email");
-                }
+
                 else if (TextUtils.isEmpty(Password))
                 {
                     password.setError("Please Enter Password");
@@ -94,7 +91,7 @@ public class loginpage extends AppCompatActivity {
                                 if (task.isSuccessful())
                                 {
                                     progressDialog.dismiss();
-                                    startActivity(new Intent(loginpage.this,MainActivity.class));
+                                    startActivity(new Intent(loginpage.this,ChooserActivity.class));
                                     finish();
                                 }
                                 else

@@ -26,6 +26,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.ToggleButton;
@@ -47,6 +48,8 @@ public final class LivePreviewActivity extends AppCompatActivity
         CompoundButton.OnCheckedChangeListener {
   private static final String FACE_DETECTION = "Face Detection";
 
+
+
   private static final String TAG = "LivePreviewActivity";
   private static final int PERMISSION_REQUESTS = 1;
 
@@ -59,6 +62,8 @@ public final class LivePreviewActivity extends AppCompatActivity
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     Log.d(TAG, "onCreate");
+
+
 
     setContentView(R.layout.activity_live_preview);
 
@@ -92,6 +97,8 @@ public final class LivePreviewActivity extends AppCompatActivity
       getRuntimePermissions();
     }
   }
+
+
 
   @Override
   public synchronized void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {

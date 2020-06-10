@@ -9,9 +9,15 @@ public class GlobalClass   extends Application {
     public int rightindex=0;
     public int leftindex=0;
 
+    public int rightEyeIndex;
+    public int leftEyeIndex;
+
 
     public  String[] righteye=new String[80];
     public  String[] lefteye=new String[80];
+
+
+
     public void playSound(int resId){
         MediaPlayer mp = MediaPlayer.create(GlobalClass.this, resId);
         mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -67,7 +73,6 @@ public class GlobalClass   extends Application {
     //    }
     public void warningalert() {
         playSound(R.raw.alert);
-//        showDialog();
 
     }
     public void highalert() {

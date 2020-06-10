@@ -13,9 +13,18 @@
         android:name=".GlobalClass"
         android:allowBackup="true"
         android:icon="@drawable/driver"
-        android:theme="@style/MaterialTheme">
+        android:theme="@style/SignUpActivityTheme">
         <activity android:name=".activity_test_result"></activity>
-        <activity android:name=".SplashScreen" />
+        <activity android:name=".SplashScreen" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+
+        </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".signuppage" />
         <activity android:name=".loginpage" />
@@ -23,11 +32,8 @@
             android:name=".ChooserActivity"
             android:exported="true"
             android:label="Driver drowsiness">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity
             android:name=".LivePreviewActivity"

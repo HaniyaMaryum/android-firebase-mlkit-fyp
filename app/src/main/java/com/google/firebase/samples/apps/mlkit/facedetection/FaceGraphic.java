@@ -18,14 +18,20 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.provider.ContactsContract;
+import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.google.android.gms.vision.CameraSource;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.ml.vision.face.FirebaseVisionFace;
 import com.google.firebase.samples.apps.mlkit.GlobalClass;
 import com.google.firebase.samples.apps.mlkit.GraphicOverlay;
 import com.google.firebase.samples.apps.mlkit.GraphicOverlay.Graphic;
+import com.google.firebase.samples.apps.mlkit.PersonModel.Data;
+import com.google.firebase.samples.apps.mlkit.R;
 
 /**
  * Graphic instance for rendering face position, orientation, and landmarks within an associated
@@ -41,6 +47,7 @@ public class FaceGraphic extends Graphic {
   private static final float ID_X_OFFSET = -50.0f;
   private static final float BOX_STROKE_WIDTH = 5.0f;
 
+
   private static final int[] COLOR_CHOICES = {
     Color.BLUE //, Color.CYAN, Color.GREEN, Color.MAGENTA, Color.RED, Color.WHITE, Color.YELLOW
   };
@@ -51,6 +58,10 @@ public class FaceGraphic extends Graphic {
   private final Paint facePositionPaint;
   private final Paint idPaint;
   private final Paint boxPaint;
+
+
+  FirebaseDatabase db = FirebaseDatabase.getInstance();
+  DatabaseReference databaseReference;
 
   private volatile FirebaseVisionFace firebaseVisionFace;
 
@@ -71,7 +82,13 @@ public class FaceGraphic extends Graphic {
     boxPaint.setColor(selectedColor);
     boxPaint.setStyle(Paint.Style.STROKE);
     boxPaint.setStrokeWidth(BOX_STROKE_WIDTH);
+
+    databaseReference = db.getReference("EyesValues");
+
+
   }
+
+
 
   /**
    * Updates the face instance from the detection of the most recent frame. Invalidates the relevant
@@ -101,10 +118,28 @@ public class FaceGraphic extends Graphic {
     globalVariable.righteye[globalVariable.rightindex]=String.format("%.2f", face.getRightEyeOpenProbability());
     globalVariable.lefteye[globalVariable.leftindex]=String.format("%.2f", face.getRightEyeOpenProbability());
 //    System.out.println(globalVariable.s1[globalVariable.i]);
-    globalVariable.rightindex++;
-    globalVariable.leftindex++;
+
+
+      globalVariable.rightEyeIndex = globalVariable.rightindex++;
+      globalVariable.leftEyeIndex = globalVariable.leftindex++;
+
+
+
+    String id = databaseReference.push().getKey();
+
+    Data data = new Data(globalVariable.rightEyeIndex, globalVariable.leftEyeIndex, id);
+    databaseReference.child(id).setValue(data);
+    Toast.makeText(getApplicationContext(), "Data of eyes have been get", Toast.LENGTH_SHORT).show();
+
+
+
+
+
+
+
 //   String s1=String.format("%.2f", face.getRightEyeOpenProbability());
-    if((globalVariable.rightindex==80)&&(globalVariable.leftindex==80)){
+    if((globalVariable.rightindex==80)&&(globalVariable.leftindex==80))
+    {
       int warningcheck = 0;
       int leftwarning=0;
       int lefthigh=0;
@@ -237,4 +272,6 @@ public class FaceGraphic extends Graphic {
     float bottom = y + yOffset;
     canvas.drawRect(left, top, right, bottom, boxPaint);
   }
+
+
 }
